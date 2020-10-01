@@ -10,13 +10,9 @@
     <meta property="og:url" content="" />
     <meta property="og:image" content="" />
     <!-- <link rel="manifest" href="site.webmanifest" />
-    <link rel="apple-touch-icon" href="icon.png" />
+    <link rel="apple-touch-icon" href="icon.png" />-->
 
-    <link rel="stylesheet" href="css/normalize.css" />
-    <link rel="stylesheet" href="css/main.css" />
-    <link rel="stylesheet" href="css/materialize.css" /> -->
     <meta name="theme-color" content="#fafafa" />
-    <!-- <script src="<//%= htmlWebpackPlugin.options.links[0] %// >"></script> -->
   </head>
 
   <body>
@@ -41,7 +37,7 @@
                   value="{{{firstName}}}"
                   id="first_name"
                   type="text"
-                  class="validate"
+                  class="validate override-input"
                 />
                 <label for="first_name">First Name</label>
               </div>
@@ -51,7 +47,7 @@
                   value="{{{lastName}}}"
                   id="last_name"
                   type="text"
-                  class="validate"
+                  class="validate override-input"
                 />
                 <label for="last_name">Last Name</label>
               </div>
@@ -63,7 +59,7 @@
                   value="{{{email}}}"
                   id="email"
                   type="text"
-                  class="validate"
+                  class="validate override-input"
                 />
                 <label for="email">email</label>
               </div>
@@ -73,7 +69,7 @@
                   value="{{{mobile}}}"
                   id="mobile"
                   type="text"
-                  class="validate"
+                  class="validate override-input"
                 />
                 <label for="mobile">mobile</label>
               </div>
@@ -85,7 +81,7 @@
                   value="{{{team}}}"
                   id="team"
                   type="text"
-                  class="validate"
+                  class="validate override-input"
                 />
                 <label for="team">Team</label>
               </div>
@@ -95,7 +91,7 @@
                   value="{{{seniority}}}"
                   id="seniority"
                   type="text"
-                  class="validate"
+                  class="validate override-input"
                 />
                 <label for="first_time">First Time at Glow</label>
               </div>
@@ -107,7 +103,7 @@
                   value="{{{date}}} {{{time}}}"
                   id="preferred"
                   type="text"
-                  class="validate"
+                  class="validate override-input"
                 />
                 <label for="team">Preferred Day/Time</label>
               </div>
@@ -117,14 +113,17 @@
                   value="{{{firstVisit}}}"
                   id="first_time"
                   type="text"
-                  class="validate"
+                  class="validate override-input"
                 />
                 <label for="first_time">First Time at Glow</label>
               </div>
             </div>
             <div class="row">
-              <div class="input-field col s12">
-                <textarea disabled id="request" class="materialize-textarea"
+              <div class="input-field col s12 ">
+                <textarea
+                  disabled
+                  id="request"
+                  class="materialize-textarea override-input"
                   >{{{requestInfo}}}</textarea
                 >
                 <label for="request">Customer Request</label>

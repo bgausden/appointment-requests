@@ -1,0 +1,4 @@
+/* Can't see how to change the order of inlined CSS so have to use !important for now */
+.override-input {
+  color: rgba(0, 0, 0, 0.8) !important;
+}

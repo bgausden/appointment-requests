@@ -23,11 +23,12 @@ const config = {
     ]
   },
   plugins: [
-    new HtmlWebpackPlugin({
+    /*     new HtmlWebpackPlugin({
       inject: true,
       template: path.resolve("src/index.html"),
       links: ["modernizr.js"]
-    }),
+    }), */
+    new HtmlWebpackPlugin(),
     new InlineChunkHtmlPlugin(HtmlWebpackPlugin, [/\.(css|js)$/])
   ]
 };

@@ -38,7 +38,7 @@
               <div class="input-field col s12 m6">
                 <input
                   disabled
-                  value="Namrata"
+                  value="{{{firstName}}}"
                   id="first_name"
                   type="text"
                   class="validate"
@@ -48,7 +48,7 @@
               <div class="input-field col s12 m6">
                 <input
                   disabled
-                  value="Chakrabarti"
+                  value="{{{lastName}}}"
                   id="last_name"
                   type="text"
                   class="validate"
@@ -60,7 +60,7 @@
               <div class="input-field col s12 m6">
                 <input
                   disabled
-                  value="namratachakrabarti@gmail.com"
+                  value="{{{email}}}"
                   id="email"
                   type="text"
                   class="validate"
@@ -70,7 +70,7 @@
               <div class="input-field col s12 m6">
                 <input
                   disabled
-                  value="12345678"
+                  value="{{{mobile}}}"
                   id="mobile"
                   type="text"
                   class="validate"
@@ -82,7 +82,7 @@
               <div class="input-field col s12 m6">
                 <input
                   disabled
-                  value="Facial/Beauty"
+                  value="{{{team}}}"
                   id="team"
                   type="text"
                   class="validate"
@@ -92,8 +92,8 @@
               <div class="input-field col s12 m6">
                 <input
                   disabled
-                  value="No"
-                  id="first_time"
+                  value="{{{seniority}}}"
+                  id="seniority"
                   type="text"
                   class="validate"
                 />
@@ -104,18 +104,28 @@
               <div class="input-field col s12 m6">
                 <input
                   disabled
-                  value="Fri Oct 02 2020 4:00 PM - 7:00 PM"
+                  value="{{{date}}} {{{time}}}"
                   id="preferred"
                   type="text"
                   class="validate"
                 />
                 <label for="team">Preferred Day/Time</label>
               </div>
+              <div class="input-field col s12 m6">
+                <input
+                  disabled
+                  value="{{{firstVisit}}}"
+                  id="first_time"
+                  type="text"
+                  class="validate"
+                />
+                <label for="first_time">First Time at Glow</label>
+              </div>
             </div>
             <div class="row">
-              <div class="input-field col s12 m6">
-                <textarea disabled id="request" class="materialize-textarea">
-For facial and eye brow plucking</textarea
+              <div class="input-field col s12">
+                <textarea disabled id="request" class="materialize-textarea"
+                  >{{{requestInfo}}}</textarea
                 >
                 <label for="request">Customer Request</label>
               </div>
@@ -124,19 +134,5 @@ For facial and eye brow plucking</textarea
         </div>
       </div>
     </div>
-
-    <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
-    <script>
-      window.ga = function() {
-        ga.q.push(arguments);
-      };
-      ga.q = [];
-      ga.l = +new Date();
-      ga("create", "UA-XXXXX-Y", "auto");
-      ga("set", "anonymizeIp", true);
-      ga("set", "transport", "beacon");
-      ga("send", "pageview");
-    </script>
-    <script src="https://www.google-analytics.com/analytics.js" async></script>
   </body>
 </html>

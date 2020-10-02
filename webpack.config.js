@@ -1,7 +1,8 @@
 const webpack = require("webpack");
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-var InlineChunkHtmlPlugin = require("inline-chunk-html-plugin");
+const InlineChunkHtmlPlugin = require("inline-chunk-html-plugin");
+const HtmlWebpackInlineSVGPlugin = require("html-webpack-inline-svg-plugin");
 
 const config = {
   mode: "development",
@@ -15,20 +16,12 @@ const config = {
       {
         test: /\.css$/,
         use: ["style-loader", "css-loader"]
-      },
-      {
-        test: /\.svg$/,
-        loader: "svg-inline-loader"
       }
     ]
   },
   plugins: [
-    /*     new HtmlWebpackPlugin({
-      inject: true,
-      template: path.resolve("src/index.html"),
-      links: ["modernizr.js"]
-    }), */
     new HtmlWebpackPlugin(),
+    new HtmlWebpackInlineSVGPlugin(),
     new InlineChunkHtmlPlugin(HtmlWebpackPlugin, [/\.(css|js)$/])
   ]
 };

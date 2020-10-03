@@ -22,6 +22,7 @@
     "inline-chunk-html-plugin": "^1.1.1",
     "mini-css-extract-plugin": "^0.11.2",
     "parcel-bundler": "^1.12.4",
+    "raw-loader": "^4.0.1",
     "style-loader": "^1.2.1",
     "webpack": "^4.44.2",
     "webpack-cli": "^3.3.12",

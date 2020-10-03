@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="no-js" lang="">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <title></title>
@@ -11,14 +11,13 @@
     <meta property="og:image" content="" />
     <!-- <link rel="manifest" href="site.webmanifest" />
     <link rel="apple-touch-icon" href="icon.png" />-->
-<!--     <link rel="stylesheet" href="../css/local-override.css" />
-    <link rel="stylesheet" href="../css/main.css" />
-    <link rel="stylesheet" href="../css/materialize.css" />
-    <link rel="stylesheet" href="../css/normalize.css" /> -->
+    <!-- <link rel="stylesheet" href="../css/local-override.css" /> -->
+    <!-- <link rel="stylesheet" href="../css/main.css" /> -->
+    <!-- <link rel="stylesheet" href="../css/materialize.css" /> -->
+    <!-- <link rel="stylesheet" href="../css/normalize.css" /> -->
 
     <meta name="theme-color" content="#fafafa" />
   </head>
-
   <body>
     <div class="container">
       <div class="card section">
@@ -33,107 +32,73 @@
       </div>
       <div class="card section">
         <div class="row">
-          <form class="col s12">
-            <div class="row">
-              <div class="input-field col s12 m6">
-                <input
-                  disabled
-                  value="{{{firstName}}}"
-                  id="first_name"
-                  type="text"
-                  class="validate override-input"
-                />
-                <label for="first_name">First Name</label>
-              </div>
-              <div class="input-field col s12 m6">
-                <input
-                  disabled
-                  value="{{{lastName}}}"
-                  id="last_name"
-                  type="text"
-                  class="validate override-input"
-                />
-                <label for="last_name">Last Name</label>
-              </div>
-            </div>
-            <div class="row">
-              <div class="input-field col s12 m6">
-                <input
-                  disabled
-                  value="{{{email}}}"
-                  id="email"
-                  type="text"
-                  class="validate override-input"
-                />
-                <label for="email">email</label>
-              </div>
-              <div class="input-field col s12 m6">
-                <input
-                  disabled
-                  value="{{{mobile}}}"
-                  id="mobile"
-                  type="text"
-                  class="validate override-input"
-                />
-                <label for="mobile">mobile</label>
-              </div>
-            </div>
-            <div class="row">
-              <div class="input-field col s12 m6">
-                <input
-                  disabled
-                  value="{{{team}}}"
-                  id="team"
-                  type="text"
-                  class="validate override-input"
-                />
-                <label for="team">Team</label>
-              </div>
-              <div class="input-field col s12 m6">
-                <input
-                  disabled
-                  value="{{{seniority}}}"
-                  id="seniority"
-                  type="text"
-                  class="validate override-input"
-                />
-                <label for="first_time">First Time at Glow</label>
-              </div>
-            </div>
-            <div class="row">
-              <div class="input-field col s12 m6">
-                <input
-                  disabled
-                  value="{{{date}}} {{{time}}}"
-                  id="preferred"
-                  type="text"
-                  class="validate override-input"
-                />
-                <label for="team">Preferred Day/Time</label>
-              </div>
-              <div class="input-field col s12 m6">
-                <input
-                  disabled
-                  value="{{{firstVisit}}}"
-                  id="first_time"
-                  type="text"
-                  class="validate override-input"
-                />
-                <label for="first_time">First Time at Glow</label>
-              </div>
-            </div>
-            <div class="row">
-              <div class="input-field col s12">
-                <textarea
-                  disabled
-                  id="request"
-                  class="materialize-textarea override-input"
-                  >{{{requestInfo}}}</textarea
-                >
-                <label for="request">Customer Request</label>
-              </div>
-            </div>
-          </form>
+          <div class="col s12 m6">
+            <p class="field-label">First Name</p>
+            <p>
+              <textarea class="materialize-textarea"><%= firstName%></textarea>
+            </p>
+          </div>
+          <div class="col s12 m6">
+            <p>
+              <span class="field-label">Last Name</span>
+            </p>
+
+            <p>
+              <textarea class="materialize-textarea"><%=lastName%></textarea>
+            </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s12 m6">
+            <span class="field-label">Email</span>
+            <p>
+              <textarea class="materialize-textarea"><%= email%></textarea>
+            </p>
+          </div>
+          <div class="col s12 m6">
+            <span class="field-label">Mobile</span>
+            <p>
+              <textarea class="materialize-textarea"><%=mobile%></textarea>
+            </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s12 m6">
+            <span class="field-label">Team</span>
+            <p>
+              <textarea class="materialize-textarea"><%= team%></textarea>
+            </p>
+          </div>
+          <div class="col s12 m6">
+            <span class="field-label">Seniority</span>
+            <p>
+              <textarea class="materialize-textarea"><%=seniority%></textarea>
+            </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s12 m6">
+            <span class="field-label">Date & Time</span>
+            <p>
+              <textarea class="materialize-textarea"><%= dateTime%></textarea>
+            </p>
+          </div>
+          <div class="col s12 m6">
+            <span class="field-label">First Visit</span>
+            <p>
+              <textarea class="materialize-textarea"><%=firstVisit%></textarea>
+            </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s12">
+            <span class="field-label">Request</span>
+            <p>
+              <textarea class="materialize-textarea">
+<%= requestInfo%></textarea
+              >
+            </p>
+          </div>
         </div>
       </div>
     </div>

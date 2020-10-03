@@ -2,3 +2,14 @@
 .override-input {
   color: rgba(0, 0, 0, 0.8) !important;
 }
+
+.field-label {
+  color: rgba(0, 0, 0, 0.42);
+  font-size: 0.8rem;
+}
+
+p {
+  display: block;
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+}

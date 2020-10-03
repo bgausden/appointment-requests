@@ -14,12 +14,17 @@ const config = {
     path: path.resolve(__dirname, "dist"),
     filename: "bundle.js",
   },
+  watch: true,
+  watchOptions: {
+    aggregateTimeout: 1000,
+    ignored: /node_modules/,
+  },
   module: {
     rules: [
-      /* {
+      /*       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader"]
-      } */
+        use: ["style-loader", "css-loader"],
+      }, */
       {
         test: /\.css$/,
         use: [
@@ -33,10 +38,13 @@ const config = {
   },
   plugins: [
     new MiniCssExtractPlugin(),
-    new HtmlWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      // use raw-loader to prevent webpack trying to resolve ejs fields
+      template: "!!raw-loader!" + path.join(__dirname, "src/index.ejs"),
+    }),
     new HTMLInlineCSSWebpackPlugin(),
     new HtmlWebpackInlineSVGPlugin(),
-    // new InlineChunkHtmlPlugin(HtmlWebpackPlugin, [/\.(css|js)$/])
+    // new InlineChunkHtmlPlugin(HtmlWebpackPlugin, [/\.(css)$/]),
   ],
 };
 

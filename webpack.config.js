@@ -8,6 +8,12 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const PurgecssPlugin = require("purgecss-webpack-plugin");
 const HTMLInlineCSSWebpackPlugin = require("html-inline-css-webpack-plugin")
   .default;
+/* // doesn't support HtmlWebpackPlugin v 4.x
+  const HtmlWebpackInlineStylePlugin = require("html-webpack-inline-style-plugin"); */
+
+const TerserPlugin = require("terser-webpack-plugin");
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 const PATHS = {
   src: path.join(__dirname, "src"),
@@ -24,14 +30,26 @@ const config = {
       cacheGroups: {
         styles: {
           name: "styles",
-          test: /\.css$/,
+          test: /\.css$/i,
           chunks: "all",
           enforce: true,
         },
       },
     },
+    minimize: true,
+    minimizer: [
+      new TerserPlugin(),
+      new OptimizeCSSAssetsPlugin({
+        assetNameRegExp: /\.css$/i,
+        cssProcessor: require("cssnano"),
+        cssProcessorPluginOptions: {
+          preset: ["default", { discardComments: { removeAll: true } }],
+        },
+        canPrint: true,
+      }),
+    ],
   },
-  watch: true,
+  watch: false,
   watchOptions: {
     aggregateTimeout: 1000,
     ignored: /node_modules/,
@@ -46,21 +64,38 @@ const config = {
         test: /\.css$/i,
         use: [{ loader: MiniCssExtractPlugin.loader }, "css-loader"],
       },
+      {
+        test: /\.html$/i,
+        loader: "html-loader",
+      },
     ],
   },
   plugins: [
+    new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
       filename: "[name].css",
     }),
     new PurgecssPlugin({
       paths: glob.sync(`${PATHS.src}/**/*`, { nodir: true }),
     }),
+    /* new OptimizeCssAssetsPlugin({
+      assetNameRegExp: /\.css$/i,
+      cssProcessor: require("cssnano"),
+      cssProcessorPluginOptions: {
+        preset: ["default", { discardComments: { removeAll: true } }],
+      },
+      canPrint: true,
+    }), */
     new HtmlWebpackPlugin({
       // use raw-loader to prevent webpack trying to resolve ejs fields
       template: "!!raw-loader!" + path.join(__dirname, "src/index.ejs"),
+      //template: "src/index.ejs",
+      filename: "index.ejs",
     }),
     new HTMLInlineCSSWebpackPlugin(),
     new HtmlWebpackInlineSVGPlugin(),
+    /* // doesn't support HtmlWebpackPlugin v 4.x
+    new HtmlWebpackInlineStylePlugin(), */
     // new InlineChunkHtmlPlugin(HtmlWebpackPlugin, [/\.(css)$/]),
   ],
 };

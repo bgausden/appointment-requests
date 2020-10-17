@@ -1,6 +1,7 @@
 const webpack = require("webpack");
 const path = require("path");
-const glob = require("glob");
+//const glob = require("glob");
+const glob = require("glob-all");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const InlineChunkHtmlPlugin = require("inline-chunk-html-plugin");
 const HtmlWebpackInlineSVGPlugin = require("html-webpack-inline-svg-plugin");
@@ -17,6 +18,7 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 const PATHS = {
   src: path.join(__dirname, "src"),
+  css: path.join(__dirname, "css"),
 };
 const config = {
   mode: "development",
@@ -36,7 +38,7 @@ const config = {
         },
       },
     },
-    minimize: true,
+    minimize: false,
     minimizer: [
       new TerserPlugin(),
       new OptimizeCSSAssetsPlugin({
@@ -62,12 +64,15 @@ const config = {
       }, */
       {
         test: /\.css$/i,
-        use: [{ loader: MiniCssExtractPlugin.loader }, "css-loader"],
+        // use: [{ loader: MiniCssExtractPlugin.loader }, "css-loader"],
+        // per PurgeCSS plugin example
+        use: [MiniCssExtractPlugin.loader, "css-loader"],
       },
+      /* // expected to prevent EJS processing but didn't work
       {
         test: /\.html$/i,
         loader: "html-loader",
-      },
+      }, */
     ],
   },
   plugins: [
@@ -76,7 +81,17 @@ const config = {
       filename: "[name].css",
     }),
     new PurgecssPlugin({
-      paths: glob.sync(`${PATHS.src}/**/*`, { nodir: true }),
+      paths: glob.sync(
+        [
+          /* `${PATHS.css}/materialize.css`,
+          `${PATHS.css}/local-override.css`, */
+          `${PATHS.css}/**/*`,
+          `${PATHS.src}/index.ejs`,
+        ],
+        {
+          nodir: true,
+        }
+      ),
     }),
     /* new OptimizeCssAssetsPlugin({
       assetNameRegExp: /\.css$/i,
@@ -92,7 +107,8 @@ const config = {
       //template: "src/index.ejs",
       filename: "index.ejs",
     }),
-    new HTMLInlineCSSWebpackPlugin(),
+    /* // Disable while testing juice
+    new HTMLInlineCSSWebpackPlugin(), */
     new HtmlWebpackInlineSVGPlugin(),
     /* // doesn't support HtmlWebpackPlugin v 4.x
     new HtmlWebpackInlineStylePlugin(), */
